@@ -1,0 +1,14 @@
+C:\Users\MOHIT\Desktop\Net Learning\ConsoleClassUses\bin\Debug\net8.0\ConsoleClassUses.exe
+C:\Users\MOHIT\Desktop\Net Learning\ConsoleClassUses\bin\Debug\net8.0\ConsoleClassUses.deps.json
+C:\Users\MOHIT\Desktop\Net Learning\ConsoleClassUses\bin\Debug\net8.0\ConsoleClassUses.runtimeconfig.json
+C:\Users\MOHIT\Desktop\Net Learning\ConsoleClassUses\bin\Debug\net8.0\ConsoleClassUses.dll
+C:\Users\MOHIT\Desktop\Net Learning\ConsoleClassUses\bin\Debug\net8.0\ConsoleClassUses.pdb
+C:\Users\MOHIT\Desktop\Net Learning\ConsoleClassUses\obj\Debug\net8.0\ConsoleClassUses.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MOHIT\Desktop\Net Learning\ConsoleClassUses\obj\Debug\net8.0\ConsoleClassUses.AssemblyInfoInputs.cache
+C:\Users\MOHIT\Desktop\Net Learning\ConsoleClassUses\obj\Debug\net8.0\ConsoleClassUses.AssemblyInfo.cs
+C:\Users\MOHIT\Desktop\Net Learning\ConsoleClassUses\obj\Debug\net8.0\ConsoleClassUses.csproj.CoreCompileInputs.cache
+C:\Users\MOHIT\Desktop\Net Learning\ConsoleClassUses\obj\Debug\net8.0\ConsoleClassUses.dll
+C:\Users\MOHIT\Desktop\Net Learning\ConsoleClassUses\obj\Debug\net8.0\refint\ConsoleClassUses.dll
+C:\Users\MOHIT\Desktop\Net Learning\ConsoleClassUses\obj\Debug\net8.0\ConsoleClassUses.pdb
+C:\Users\MOHIT\Desktop\Net Learning\ConsoleClassUses\obj\Debug\net8.0\ConsoleClassUses.genruntimeconfig.cache
+C:\Users\MOHIT\Desktop\Net Learning\ConsoleClassUses\obj\Debug\net8.0\ref\ConsoleClassUses.dll
