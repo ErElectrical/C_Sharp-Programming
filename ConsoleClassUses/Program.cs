@@ -213,6 +213,14 @@ namespace MyFirstProject
             //Typesofvarible typ = new Typesofvarible(150);
             Typesofvarible.varibledef();
 
+            OpratorUses opreator = new OpratorUses();
+            opreator.ArithmeticOpreator();
+            opreator.RelationalOpreator();
+            opreator.BitWiseOpreator();
+            opreator.AssignementOpreator();
+            opreator.TernaryOpreator();
+            ControlFlowStatement.explaincontrolflow();
+
             Console.ReadKey();
     }
     }
