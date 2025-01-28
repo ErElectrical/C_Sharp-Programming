@@ -220,6 +220,7 @@ namespace MyFirstProject
             opreator.AssignementOpreator();
             opreator.TernaryOpreator();
             ControlFlowStatement.explaincontrolflow();
+            StarPattern.DifferentStarPattern();
 
             Console.ReadKey();
     }
