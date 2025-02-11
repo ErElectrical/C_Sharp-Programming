@@ -13,6 +13,15 @@ namespace MyFirstProject
 {
     internal class Program
     {
+
+        static string Developer_name = "Mohit Tanwar";
+        string tech = "";
+
+        public Program(string tch)
+        {
+            this.tech = tch;
+        }
+
         static void Main(string[] args)
         {
             Console.BackgroundColor = ConsoleColor.Red;
@@ -214,13 +223,60 @@ namespace MyFirstProject
             Typesofvarible.varibledef();
 
             OpratorUses opreator = new OpratorUses();
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("-----");
+            }
             opreator.ArithmeticOpreator();
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("-----");
+            }
             opreator.RelationalOpreator();
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("-----");
+            }
             opreator.BitWiseOpreator();
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("-----");
+            }
             opreator.AssignementOpreator();
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("-----");
+            }
             opreator.TernaryOpreator();
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("-----");
+            }
             ControlFlowStatement.explaincontrolflow();
             StarPattern.DifferentStarPattern();
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("-----");
+            }
+            FunctionsUnderstanding.Functionknowledge();
+
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("-----");
+            }
+            Console.WriteLine($"Value before object createion  {Developer_name}");
+            Program prg = new Program("Mern stack");
+            Console.WriteLine($"Value afetr object createion  {Developer_name}");
+            Console.WriteLine($"Value of technology  {prg.tech}");
+            Console.WriteLine("Non-static memebers are comes into existence after creation of object before that it does not exist" +
+                "where static members are created when class excuation started or application start" +
+                "Scope of static varible is  application. It is available for everyone untill the application close");
+
+            Console.WriteLine("A class which is created by static  modfifer is called as static class." +
+                "object can not be created for static class" +
+                "A static class can have static members only.");
+
+
 
             Console.ReadKey();
     }
