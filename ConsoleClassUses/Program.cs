@@ -14,6 +14,29 @@ namespace MyFirstProject
     internal class Program
     {
 
+
+        public class Logger
+        {
+            private static readonly Logger _instance = new Logger();
+
+            private Logger()
+            {
+
+            }
+
+            public static Logger instance
+            {
+                get {  return _instance; }
+            }
+
+            public void DisplayMessage( string msg )
+            {
+                Console.WriteLine($" Devloper Name is {msg} " +
+                    $"Welcome to singleton Desgin pattern " +
+                    "");
+            }
+        }
+        
         static string Developer_name = "Mohit Tanwar";
         string tech = "";
 
@@ -24,6 +47,7 @@ namespace MyFirstProject
 
         static void Main(string[] args)
         {
+            ConstructorsDemo cnst = new ConstructorsDemo();
             Console.BackgroundColor = ConsoleColor.Red;
             Console.ForegroundColor = ConsoleColor.Black;
             Console.Title = "Console classes Uses";
@@ -277,8 +301,90 @@ namespace MyFirstProject
                 "A static class can have static members only.");
 
 
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("-----");
+            }
+            OOP_Concepts.oops_explaination();
+
+
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("-----");
+            }
+
+            Console.WriteLine("The following are the steps to implement the Singleton Design Pattern." +
+                "\r\n\r\nYou need to declare only a single constructor in your class and that constructor should be private and parameterless." +
+                " This is required because it is not allowed the class to be instantiated from outside the class. It only instantiates from within the class." +
+                "\r\nThe class should be declared sealed which will ensure that it cannot be inherited." +
+                "\r\nYou need to create a private static variable that is going to hold a reference to the single created instance of the class." +
+                "\r\nYou also need to create a public static property/method which will return the single-created instance of the singleton class. " +
+                "This method or property first checks if an instance of the singleton class is available or not." +
+                " If the singleton instance is available, then it returns that singleton instance otherwise it will create an instance and then return that instance.");
+
+            Logger.instance.DisplayMessage("Mohit Tanwar");
+
+            Singleton fromPlace1 = Singleton.GetSingletonInstance();
+            fromPlace1.SomeMethod("From Place 1");
+            Singleton fromPlace2 = Singleton.GetSingletonInstance();
+            fromPlace2.SomeMethod("From Place 2");
+
 
             Console.ReadKey();
     }
+    }
+
+    public class ConstructorsDemo
+    {
+        public static int x; //It is going to be initialized by static constructor
+        public int y; //It is going to be initialized by non-static constructor
+        //Static Constructor
+        static ConstructorsDemo()
+        {
+            //This constructor initialized the static variable x with default value i.e. 0
+            Console.WriteLine("Static Constructor is Called");
+        }
+        //Non-Static Constructor
+        public ConstructorsDemo()
+        {
+            //This constructor initialized the static variable y with default value i.e. 0
+            Console.WriteLine("Non-Static Constructor is Called");
+        }
+    }
+
+    public sealed class Singleton
+    {
+        //static varible to count no. of instances created
+        private static int counter = 0;
+
+        //static varible to hold singleton object
+        private static Singleton instance = null;
+
+        //varible to hold instance of singleton class
+        private static readonly object Instancelock = new object();
+
+        //Method to get singleton class instance
+        public static Singleton GetSingletonInstance()
+        {
+            lock (Instancelock)
+            {
+                if (instance == null)
+                {
+                    instance = new Singleton();
+                }
+                return instance;
+            }
+        }
+
+        //A private constructor to insiet counter static varible
+        private Singleton()
+        {
+            counter++;
+            Console.WriteLine($"Singleton Constructor Executed {counter} Time");
+        }
+        public void SomeMethod(string Message)
+        {
+            Console.WriteLine($"Some Method Called : {Message}");
+        }
     }
 }
