@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ConsoleClassUses
 {
@@ -129,9 +130,229 @@ namespace ConsoleClassUses
                 " has only one instance and provides a global point of access to that instance." +
                 " This pattern is commonly used in scenarios where a single instance of a class is needed to coordinate actions across the system.");
 
-            
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("-----");
+            }
+
+            Console.WriteLine("The Destructor is also a special type of method present in a class, just like a constructor," +
+                " having the same name as the class name but prefixed with ~ tilde. " +
+                "The Constructor in C# is Explicitly called when the object of the class is created. On the other hand," +
+                " the Destructor in C# is Implicitly Called when the object of the class is destroyed." +
+                "" +
+                "A Destructor is called automatically by the garbage collector when object has no use or program excution is done" +
+                "Developer can force garbage collector to call destructor by using GC.Collect() Method ");
 
 
+            DestructorDemo obj1 = new DestructorDemo();
+            DestructorDemo obj2 = new DestructorDemo();
+            obj1 = null;
+
+            //This statement force the garbage collector to destoyed all unused objects.
+            GC.Collect();
+            Console.WriteLine("There's only one Destructor for a class ." +
+                "Destructors cannot be called Explicitly. They are invoked automatically by the garbage collector." +
+                " At most what we can do is, we can request the Garbage collector to execute the Destructor by calling the GC.Collect() method");
+
+            Console.WriteLine("" +
+                "If our application is using an expensive external resource, " +
+                "then it is recommended to provide an explicit way to release the resources before the garbage collector frees the object." +
+                " To release the resource, it is recommended to implement a Dispose method of the IDisposable interface " +
+                "that performs the necessary clean-up for the object." +
+                " So, basically, we need our class to inherit from the IDisposable interface and provide the implementation for the Dispose methods" +
+                "");
+
+            UmmanagedResource resource = null;
+            try
+            {
+                resource = new UmmanagedResource();
+                Console.WriteLine("Using Resources");
+            }
+            finally
+            {
+                if (resource != null)
+                {
+                    Console.WriteLine("Calling Dispose Method to Destroy Resources");
+                    resource.Dispose();
+                }
+            }
+
+            //Trying to Call the Dispose Method again
+            Console.WriteLine();
+            Console.WriteLine("Trying to Call the Dispose Method Again To Destroy Resources");
+            resource.Dispose();
+
+            Console.WriteLine("" +
+                "Garbage Collector is nothing but a feature provided by CLR" +
+                " that helps us clean or destroy unused managed objects. " +
+                "Cleaning or destroying those unused managed objects basically reclaims the memory." +
+                "Garbage collector basically clean up memory claims by unused managed object" +
+                "It doesnot count for umanged objects");
+
+            Console.WriteLine("Managed Code" +
+                "\r\nManaged code is code that is executed by the Common Language Runtime (CLR) in the .NET framework." +
+                " The CLR provides various services, including garbage collection, type safety, exception handling, and security." +
+                "Most C# code you write, including classes, methods, and properties, is managed code" +
+                "");
+
+
+            Console.WriteLine("" +
+                "Unmanaged code" +
+                " is code that is executed directly by the operating system outside the control of the CLR. " +
+                "This includes code written in languages like C and C++ that do not run under the CLR." +
+                " ");
+
+
+            Console.WriteLine(" Access Specifiers are used to define the scope of the type (Class, Interface, Structs, Delegate, Enum, etc.) " +
+                "as well as the scope of their members (Variables, Properties, Constructors, and Methods). " +
+                "Scope means accessibility or visibility that is who can access them and who cannot access them are defined by the Access Specifiers.");
+
+            Console.WriteLine("C# supports 6 types of access specifiers. " +
+                "They are as follows" +
+                "\r\n\r\nPrivate" +
+                "\r\nPublic" +
+                "\r\nProtected" +
+                "\r\nInternal" +
+                "\r\nProtected Internal" +
+                "\r\nPrivate Protected (C# Version 7.2 onwards)" +
+                "" +
+                "");
+
+            Console.WriteLine("" +
+                "Assemblies" +
+                "\r\nDefinition: " +
+                "An assembly is a compiled code library used for deployment, versioning, and security in .NET applications. It can be an executable (.exe) or a library (.dll)." +
+                "\r\n\r\nComponents:" +
+                "\r\n\r\n" +
+                "Manifest: Contains metadata about the assembly (name, version, culture)." +
+                "\r\nType Metadata: Information about the types (classes, interfaces) defined in the assembly." +
+                "\r\nIntermediate Language (IL) Code:" +
+                " The compiled code executed by the .NET runtime." +
+                "\r\nResources: " +
+                "Additional files (images, strings) used by the assembly." +
+                "\r\nTypes:" +
+                "\r\n\r\nExecutable Assemblies: Applications that can be run directly.\r\nLibrary Assemblies: Reusable libraries for other applications." +
+                "\r\nVersioning: Assemblies support versioning, allowing multiple versions to coexist." +
+                "\r\n\r\nStrong-Named Assemblies: Assemblies with a unique identity (name, version, public key) for security and versioning." +
+                "\r\n\r\n" +
+                "Global Assembly Cache (GAC): A machine-wide cache for shared assemblies that are strong-named." +
+                "\r\n\r\nLoading: " +
+                "Assemblies can be loaded statically (at compile time) or dynamically (at runtime using methods like Assembly.Load).");
+
+            Console.WriteLine("Types of Aceess Speicier " +
+                "" +
+                "" +
+                "Public Aceess specifiers :" +
+                " Members declared as public are accessible from any other code in the same assembly or another assembly that references it." +
+                "\r\nUsage: Use public when you want to expose a member to all other classes and assemblies." +
+                "" +
+                "" +
+                "Private: " +
+                "Members declared as private are accessible only within the body of the class or struct in which they are declared. " +
+                "They are not accessible from outside the class." +
+                "\r\nUsage:" +
+                " Use private to encapsulate data and restrict access to it, ensuring that it can only be modified by the class itself." +
+                "" +
+                "" +
+                "Protected:" +
+                " Members declared as protected are accessible within their own class and by inherited class. They are not accessible from outside the class hierarchy." +
+                "\r\nUsage: Use protected when you want to allow access to a member for classes that inherit from the base class but not for other classes." +
+                "" +
+                "Internal:" +
+                " Members declared as internal are accessible only within the same assembly (project). " +
+                "They are not accessible from another assembly." +
+                "\r\nUsage: " +
+                "Use internal when you want to expose members to other classes in the same assembly but keep them hidden from other assemblies." +
+                "" +
+                "" +
+                " Protected Internal\r\n: " +
+                "Members declared as protected internal are accessible from the current assembly and from derived classes in other assemblies. " +
+                "This is a combination of protected and internal." +
+                "\r\nUsage: " +
+                "Use protected internal when you want to allow access to a member from both derived classes and classes within the same assembly." +
+                "" +
+                "Private Protected: Accessible within the same class and derived classes, but only in the same assembly.");
+
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("-----");
+            }
+            Console.WriteLine("Encapsulation Hides the internal state and functionality of an object and only allows access through a public set of functions." +
+                " Let us simplify the above definition as follows:" +
+                "\r\n\r\nThe process of binding or grouping the State (i.e., Data Members) and Behaviour (i.e., Member Functions) together into a single unit (i.e., class, interface, struct, etc.) is called Encapsulation " +
+                ". The Encapsulation Principle ensures that the state and behavior of a unit (i.e., class, interface, struct, etc.) cannot be accessed directly from other units (i.e., class, interface, struct, etc.)." +
+                "Through encapsulation we can validate inputs before passing it to varible as state can not be changed directly");
+
+            Console.WriteLine("" +
+                "Abstraction is one of the fundamental principles of Object-Oriented Programming (OOP) ." +
+                " It allows you to hide the complex implementation details of a system and expose only the necessary parts to the user." +
+                " This helps in reducing complexity and increasing efficiency by allowing the user to interact with the system at a higher level" +
+                " without needing to understand the underlying details." +
+                "" +
+                "" +
+                "we can implement abstraction in two ways" +
+                "1.using Interface." +
+                "2.using Abstarct classes and abstarct Method.");
+
+
+            //abstraction achieved by Interface
+            IBank sbi = BankFactory.Getbank("SBI");
+            IBank Axiss = BankFactory.Getbank("Axis");
+            sbi.BankTransfer();
+            sbi.CheckBalanace();
+            sbi.MiniStatement();
+            sbi.ValidateCard();
+            sbi.WithdrawMoney();
+            Axiss.BankTransfer();
+            Axiss.CheckBalanace();
+            Axiss.MiniStatement();
+            Axiss.ValidateCard();
+            Axiss.WithdrawMoney();
+
+
+            //abstraction achieevd by Abstract class and Methods
+
+            Ibank Canara = new Canara();
+            Ibank ISBT = new ISBI();
+            Canara.BankTransfer();
+            Canara.CheckBalanace();
+            Canara.MiniStatement();
+            Canara.ValidateCard();
+            Canara.WithdrawMoney();
+            ISBT.BankTransfer();
+            ISBT.CheckBalanace();
+            ISBT.MiniStatement();
+            ISBT.ValidateCard();
+            ISBT.WithdrawMoney();
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("-----");
+            }
+
+            Console.WriteLine($"Inheritance in C# is a mechanism of consuming the members that are defined in one class from another class." +
+                $"It enhance code reusibility");
+
+            B obj54 = new B(10);
+            B obj55 = new B(20);
+            B obj35 = new B(30);
+
+            Console.WriteLine($"Single Inheritance (Single, Multilevel, and Hierarchical)" +
+                $"\r\nMultiple Inheritance (Multiple and Hybrid)");
+
+            Console.WriteLine("Handling the complexity caused due to multiple inheritances is very complex." +
+                " Hence it was not supported in dot net with class and it can be done with interfaces." +
+                "e.g : public class OPPO : Phone,Android ");
+
+            Console.WriteLine("\n The IS-A relationship is used to describe inheritance. " +
+                "It indicates that one class is a specialized version of another class. " +
+                "In other words, a derived class (child class) is a type of the base class (parent class).");
+
+            Console.WriteLine(" The HAS-A relationship describes composition or aggregation.\n" +
+                " It indicates that one class contains or is composed of one or more instances of another class. " +
+                "This relationship is used to model how objects are composed of other objects.");
+
+
+            //Cons
 
 
 
@@ -204,7 +425,7 @@ namespace ConsoleClassUses
         {
             Console.WriteLine($"Parent Class Private Constructor is Called  {msg}");
         }
-        public unherited(string msg,int n)
+        public unherited(string msg, int n)
         {
             Console.WriteLine($"Parent Class public Constructor is Called {msg} --- {n}");
         }
@@ -229,5 +450,332 @@ namespace ConsoleClassUses
     //    }
     //}
 
+    class DestructorDemo
+    {
+        public DestructorDemo()
+        {
+            Console.WriteLine("Constructor Object Created");
+        }
+        ~DestructorDemo()
+        {
+            string type = GetType().Name;
+            Console.WriteLine($"Object {type} is Destroyed");
+        }
+    }
 
-}
+
+    public class UmmanagedResource : IDisposable
+    {
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    //Write Code Here to Destroy the Managed Resources
+                    Console.WriteLine("Managed Resources Destroyed by Dispose Method");
+                }
+
+                //Write Code Here to Destroy the Umanaged Resources
+                Console.WriteLine("Unmanaged Resources Destroyed by Dispose Method");
+                disposedValue = true;
+            }
+            else
+            {
+                Console.WriteLine("Resources are Already Destroyed by Dispose Method");
+            }
+        }
+
+        ~UmmanagedResource()
+        {
+            //Write Code here to Destroy the Object
+            Console.WriteLine("Request Comes to Destructor to Destroy the Resources");
+            Dispose(false);
+        }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            //Write Code here to Destroy the Object
+            Console.WriteLine("Request Comes to Dispose Method to Destroy the Resources");
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        #endregion
+    }
+
+
+    //Members declared as public are accessible from any other code in the same assembly or another assembly that references it.
+    public class MyClass
+    {
+        public int MyProperty { get; set; }
+    }
+
+    public class MyClass1
+    {
+        private int myField;
+
+        private void MyMethod()
+        {
+            // This method can only be called within MyClass
+        }
+    }
+
+
+    public class BaseClass
+    {
+        protected int myProtectedField;
+    }
+
+    public class DerivedClass : BaseClass
+    {
+        public void AccessProtectedField()
+        {
+            myProtectedField = 10; // Accessible here
+        }
+    }
+
+    internal class MyInternalClass
+    {
+        internal void MyInternalMethod()
+        {
+            // This method can be accessed only within the same assembly
+        }
+    }
+
+
+    //Protected Internal: Accessible within the same assembly and derived classes.
+    public class MyClass2
+    {
+        protected internal int myProtectedInternalField;
+    }
+
+    public class DerivedClass1 : MyClass2
+    {
+        public void AccessField()
+        {
+            myProtectedInternalField = 10; // Accessible here
+        }
+    }
+
+    public class AnotherClass
+    {
+        public void AccessField(MyClass2 obj)
+        {
+            obj.myProtectedInternalField = 20; // Accessible here if in the same assembly
+        }
+    }
+
+    public class Bank
+    {
+        private double _Amount;
+        private long AccountNo = 1222123190;
+        private string Name = "Mohit Tanwar";
+
+        public double Amount
+        {
+            get
+            {
+                return _Amount;
+            }
+            set
+            {
+                // Validate the value before storing it in the _Amount variable
+                if (value < 0)
+                {
+
+                    Console.WriteLine($"Balance can not be negative");
+                    //throw new Exception("Please Pass a Positive Value");
+                }
+                else
+                {
+                    Console.WriteLine($"Account Number is : {AccountNo}");
+                    _Amount = value;
+                }
+            }
+        }
+    }
+
+
+    //Here we are trying to achieve abstraction using interface.
+    //Interface contains only methods defination it is responsbility of the derived classses
+    //to provide proper logic to it.
+    public interface IBank
+    {
+        void ValidateCard();
+        void WithdrawMoney();
+        void CheckBalanace();
+        void BankTransfer();
+        void MiniStatement();
+    }
+
+    public class SBI : IBank
+    {
+        public void ValidateCard()
+        {
+            Console.WriteLine("Crad validation done by SBI");
+        }
+        public void WithdrawMoney()
+        {
+            Console.WriteLine("Money withdrwal done by SBI");
+        }
+
+        public void CheckBalanace()
+        {
+            Console.WriteLine("Balance check done by SBI");
+        }
+
+        public void BankTransfer()
+        {
+            Console.WriteLine("Bank Transfer request  done by SBI");
+        }
+
+        public void MiniStatement()
+        {
+            Console.WriteLine("MiniStatement  request  done by SBI");
+        }
+    }
+
+    public class Axis : IBank
+    {
+        public void ValidateCard()
+        {
+            Console.WriteLine("Crad validation done by Axis");
+        }
+        public void WithdrawMoney()
+        {
+            Console.WriteLine("Money withdrwal done by Axis");
+        }
+
+        public void CheckBalanace()
+        {
+            Console.WriteLine("Balance check done by Axis");
+        }
+
+        public void BankTransfer()
+        {
+            Console.WriteLine("Bank Transfer request  done by Axis");
+        }
+
+        public void MiniStatement()
+        {
+            Console.WriteLine("MiniStatement  request  done by Axis");
+        }
+    }
+
+    public class BankFactory
+    {
+        public static IBank Getbank(string type)
+        {
+            IBank ob = null;
+            if(type == "SBI")
+            {
+                ob = new SBI();
+            }
+            else
+            {
+                ob = new Axis();
+            }
+            return ob;
+        }
+    }
+
+    internal abstract class Ibank
+    {
+        public abstract void ValidateCard();
+        public abstract void WithdrawMoney();
+        public abstract void CheckBalanace();
+        public abstract void BankTransfer();
+        public abstract void MiniStatement();
+    }
+
+    internal class Canara : Ibank
+    {
+        public override void ValidateCard()
+        {
+            Console.WriteLine("Crad validation done by Canara");
+        }
+        public override void WithdrawMoney()
+        {
+            Console.WriteLine("Money withdrwal done by Canara");
+        }
+
+        public override void CheckBalanace()
+        {
+            Console.WriteLine("Balance check done by Canara");
+        }
+
+        public override void BankTransfer()
+        {
+            Console.WriteLine("Bank Transfer request  done by Canara");
+        }
+
+        public override void MiniStatement()
+        {
+            Console.WriteLine("MiniStatement  request  done by Canara");
+        }
+    }
+
+    internal class ISBI : Ibank
+    {
+        public override void ValidateCard()
+        {
+            Console.WriteLine("Crad validation done by ISBI");
+        }
+        public override void WithdrawMoney()
+        {
+            Console.WriteLine("Money withdrwal done by ISBI");
+        }
+
+        public override void CheckBalanace()
+        {
+            Console.WriteLine("Balance check done by ISBI");
+        }
+
+        public override void BankTransfer()
+        {
+            Console.WriteLine("Bank Transfer request  done by ISBI");
+        }
+
+        public override void MiniStatement()
+        {
+            Console.WriteLine("MiniStatement  request  done by ISBI");
+        }
+    }
+
+  
+        class A
+        {
+            public A(int number)
+            {
+                Console.WriteLine($"Class A Constructor is Called : {number}");
+            }
+            public void Method1()
+            {
+                Console.WriteLine("Method 1");
+            }
+            public void Method2()
+            {
+                Console.WriteLine("Method 2");
+            }
+        }
+
+        class B : A
+        {
+            public B(int num) : base(num)
+            {
+                Console.WriteLine("Class B Constructor is Called");
+            }
+            public void Method3()
+            {
+                Console.WriteLine("Method 3");
+            }
+            
+        }
+    }
+
+
+
