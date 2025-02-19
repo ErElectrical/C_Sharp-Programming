@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -354,12 +355,179 @@ namespace ConsoleClassUses
 
             //Cons
 
+            Console.WriteLine(" Abstract Class:" +
+                "An abstract class in C# is a class that cannot be instantiated directly." +
+                " It is designed to be a base class from which other classes can derive." +
+                " It can contain both abstract methods (without implementation) and concrete methods (with implementation)." +
+                "Purpose: The purpose of an abstract class is to provide a common interface and shared functionality for derived classes.");
 
+            Console.WriteLine("Abstract Method:" +
+                " An abstract method is a method that is declared without an implementation in an abstract class. It must be implemented in any non-abstract derived class." +
+                "Purpose: Abstract methods define a contract that derived classes must fulfill by providing their own implementations.");
+
+
+            phone nookia = new Nokia();
+            nookia.CompanyName();
+
+
+            Console.WriteLine("Important Notes on abstract class and abstract Method");
+
+            Console.WriteLine("When to use the Abstract Method" +
+                "\r\nAbstract methods are usually declared where two or more subclasses are expected to fulfill a similar role in a different manner." +
+                " You can also do the same thing using an interface also." +
+                " But if we are using an abstract class means we can provide some common functionality that is going to be the same for all the child classes " +
+                "and this is not possible using the interface.");
+
+            Console.WriteLine("abstract class object is created when a subclass instastinted." +
+                "This is because abstract class contains concerte and static Methods that needs to be exist in memory" +
+                "we can call static methods of abtsrct class just through class name and abstract method will be called by " +
+                "subclass (derived class) object");
+
+            Console.WriteLine("Can we Declare an Abstract Method as Static" +
+                "NO, we can not do it it will give a compile time error" +
+                "Because abstract method defination needs to be provided in derived class and if it is static than it may be called before its defination provided which cretes a choas" +
+                "" +
+                "" +
+                "Can we Declare an Abstract Method as Sealed" +
+                "No we can not do it because abstract methods meants to be inherited and override " +
+                "and if it is sealed than it can not be inheited or overridden" +
+                "" +
+                "" +
+                "Can we Declare an Abstract Method as Private" +
+                "No , Because if it is private than it can not be accessible outside of boxees" +
+                "" +
+                "Difference Between Abstract Methods and Method Overriding " +
+                "Both are nearly same the only difference is if method in base class is virtual than it is optional for dericed class" +
+                "to re-implmentiotion of virtual method" +
+                "But if it is abstract than it is mandatory for the derived class to provide proper behaviour to the method.");
+
+            shape rect = new Rectangle(10.23,31.23);
+            Console.WriteLine(rect.GetArea());
+            shape cir = new circle(563.45);
+            cir.GetArea();
+
+            Console.WriteLine(" Interface is a fundamental concept defining a contract or a set of rules a class must adhere to." +
+                " It specifies a list of methods, properties, events, or indexers a class implementing the interface must provide. " +
+                "Interfaces allow you to define a common set of functionality that multiple classes can share, promoting code reusability and ensuring a consistent structure " +
+                "for related classes." +
+                "Interface helps in achieve abstraction and multiple inheritance." +
+                "Interface can not be insiteted . " +
+                "Key Characteristics of Interfaces" +
+                "\r\n" +
+                "No Implementation:" +
+                " Interfaces cannot contain any implementation. They only define the signatures of methods, properties, events, or indexers." +
+                "\r\n\r\n" +
+                "Multiple Inheritance:" +
+                " A class or struct can implement multiple interfaces, allowing for a form of multiple inheritance." +
+                "\r\n\r\n" +
+                "Public Members:" +
+                " All members of an interface are implicitly public, and you cannot specify any access modifiers." +
+                "\r\n\r\n" +
+                "Cannot Contain Fields:" +
+                " Interfaces cannot contain fields or constructors." +
+                "\r\n\r\n" +
+                "Can Contain Properties: " +
+                "Interfaces can define properties, but they cannot provide any implementation for them.");
 
 
         }
     }
 
+
+    //Abstarct class is a class that can not be instited directly
+    //it acts as a blueprint for dervied class contains abstract method and concerte method.
+    //Purpose of abstract class is to create a common interface and shared functionality between derived classes .
+
+
+    //it is neccessary for interface name to start with I
+    public interface IBikeWarehouse
+    {
+        void CompanyName();
+        void ModelYear();
+
+        
+    }
+
+
+    public class Apache : IBikeWarehouse
+    {
+        public void CompanyName()
+        {
+            Console.WriteLine("Apache rtr 180");
+        }
+
+        public void ModelYear()
+        {
+            Console.WriteLine("Apache rtr 180 -- 2014");
+        }
+    }
+
+    public class Hero : IBikeWarehouse
+    {
+        public void CompanyName()
+        {
+            Console.WriteLine("Hero pulsar 150");
+        }
+
+        public void ModelYear()
+        {
+            Console.WriteLine("Hero pulsar 180 -- 2015");
+        }
+    }
+
+
+    public abstract class shape
+    {
+        public double height;
+        public double width;
+        public double Radius;
+        public const float PI = 3.14f;
+        public abstract double GetArea();
+    }
+
+    internal class Rectangle : shape
+    {
+        public Rectangle(double height, double width)
+        {
+            this.height = height;
+            this.width = width;
+        }
+
+        public override double GetArea()
+        {
+            return height * width;
+        }
+    }
+
+    public class circle : shape
+    {
+        public circle(double radius)
+        {
+            this.Radius = radius;
+        }
+        public override double GetArea()
+        {
+            return PI * Radius;
+        }
+    }
+    public abstract class phone
+    {
+        public static void smartphone()
+        {
+            Console.WriteLine("I am a smartphone");
+        }
+
+       public abstract void CompanyName();
+    }
+
+    public class Nokia : phone
+    {
+        public override void CompanyName()
+        {
+            Console.WriteLine("I am Noika");
+            phone.smartphone();
+        }
+    }
     //Base class
     public class Animal
     {
