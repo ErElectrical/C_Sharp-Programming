@@ -430,6 +430,88 @@ namespace ConsoleClassUses
                 "Interfaces can define properties, but they cannot provide any implementation for them.");
 
 
+            Console.WriteLine("" +
+                "The Interface in C# is a fully un-implemented class used for declaring a set of methods of an object." +
+                "So, we can define an interface as a pure abstract class which allows us to define only abstract methods." +
+                " The abstract method means a method without a body or implementation." +
+                "" +
+                "\r\n\r\n" +
+                "\r\n\r\n" +
+                "It is used to achieve multiple inheritances which can’t be achieved by class. " +
+                "It is used to achieve full abstraction because it cannot have a method body.\r\n\r\n" +
+                "" +
+                "A class can be inherited either from another class or from an interface also." +
+                " So, inheritance can be divided into two categories" +
+                "\r\n\r\n" +
+                "Implementation Inheritance -- If a class is inherited from a class.Child class can use the Methods of and fields of parent class ." +
+                "\r\nInterface Inheritance -- If a class inherited a interface . As we know child class had to provide defination for its Method." +
+                "Interface provide abstraction and multiple inheritance ." +
+                "" +
+                "Methods of interface are public default and we can not change its visibility" +
+                "" +
+                "interface con inherit another interface but it can not be a child of an abstract class." +
+                "" +
+                "" +
+                "Interface can not be declared as sealed because an interface meants to be inherited where " +
+                "sealed keyword makes it impotent." +
+                "" +
+                "Class can inherit multiple interfaces but it can have only  a single subclass ." +
+                "" +
+                "Difference between Interface and Class ." +
+                "" +
+                "interface can not be instantiate ." +
+                "interface contains only abstract and public method name with their return type." +
+                "interface is not extended by class,it is implemented by the class." +
+                "" +
+                "Similarity between Interface and abstract class." +
+                "both can not be instantiated  means we can not create object for them." +
+                "whoever inhrit this it becomes a contract for child to provide defination to interace all methods" +
+                "Both intercae and abstract can not be sealed." +
+                "" +
+                " Difference Between Interface and Abstract Class" +
+                "" +
+                "The interface is a fully un-implemented class used for declaring a set of methods of an object. " +
+                "The abstract class is a partially implemented class. It implements some of the methods of an object. " +
+                "These implemented methods are common for all next-level subclasses." +
+                " The remaining operations are implemented by the next-level subclasses according to their requirement." +
+                "\r\n\r\n" +
+                "The interface allows us to develop multiple inheritances." +
+                " So, we must start object design with interface whereas abstract class does not support multiple inheritances " +
+                "so it always comes next to interface in the object creation process." +
+                "" +
+                "Abstract Class:" +
+                "\r\n" +
+                "It is a partially implemented class. It allows us to define both concrete and abstract methods." +
+                "\r\n" +
+                "It should be declared as abstract by using the abstract keyword, abstract methods should also contain the abstract keyword." +
+                "\r\nIts member’s default accessibility modifier is private and can be changed to any of the other accessibility modifiers." +
+                "\r\nIt is possible to declare data fields in an abstract class." +
+                "\r\nAn abstract class can contain a non-abstract function." +
+                "\r\nAn abstract class can inherit from another abstract class or from an interface." +
+                "\r\nAn abstract class cannot be used to implement multiple inheritances." +
+                "\r\nAbstract class members can have Access Specifiers." +
+                "" +
+                "Interface:" +
+                "\r\n" +
+                "It is a fully un-implemented class. It allows us to define only abstract methods." +
+                "\r\n" +
+                "It should be created by using the keyword interface. By default, all the members are abstract only. Explicitly using abstract keyword is not allowed." +
+                "\r\n" +
+                "Its member’s default accessibility modifier is public and cannot be changed." +
+                "\r\n" +
+                "It is not possible to declare any data fields in an interface." +
+                "\r\n" +
+                "An interface cannot contain non-abstract functions." +
+                "\r\n" +
+                "An interface can inherit from only other interfaces but cannot inherits from the abstract class." +
+                "\r\n" +
+                "An interface can be used to implement multiple inheritances." +
+                "\r\n" +
+                "Interface members cannot have Access Specifiers.");
+
+
+
+
         }
     }
 
