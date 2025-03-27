@@ -401,7 +401,7 @@ namespace ConsoleClassUses
                 "to re-implmentiotion of virtual method" +
                 "But if it is abstract than it is mandatory for the derived class to provide proper behaviour to the method.");
 
-            shape rect = new Rectangle(10.23,31.23);
+            shape rect = new Rectangle(10.23, 31.23);
             Console.WriteLine(rect.GetArea());
             shape cir = new circle(563.45);
             cir.GetArea();
@@ -507,14 +507,429 @@ namespace ConsoleClassUses
                 "\r\n" +
                 "An interface can be used to implement multiple inheritances." +
                 "\r\n" +
-                "Interface members cannot have Access Specifiers.");
+                "Interface members cannot have Access Specifiers." +
+                "" +
+                "Let's See a real time example of interface through a bank application." +
+                "" +
+                "When do you choose interface over an abstract class or vice versa ?  \n" +
+                "If we want some implementation that will be the same for all the derived classes," +
+                " then it is better to go for an abstract class instead of an interface. " +
+                "" +
+                "With the interface, we can move our implementation to any class that implements the interface." +
+                " With the abstract class, we can share the implementation for all the derived classes in one central place," +
+                " and thus avoid code duplication in the derived classes." +
+                "\r\n" +
+                "" +
+                "Can an interface inherit from another interface ?" +
+                "Yes it is possible for a interface to inheirt other interface in this case it becomes contract for derived class to provide implemntation of both " +
+                "interfaces methods." +
+                "" +
+                "" +
+                "interfcaes can not be instantited means object creation can not be done for interface." +
+                "\n If a class derived a interfaces " +
+                "\n 1. provide implementation of all of the methods" +
+                "\n 2. if some methods not needed for implementation than use abstract keyword and leave implemetation of it" +
+                "" +
+                "\n If a interface inherit another interface and both interfacses has same method name and signature" +
+                "\n than derived class has to implement both methods explicitly." +
+                "" +
+                "\n Let's take a real time example of multiple inheritance." +
+                "" +
+                "\nA scenario involving a FlyingCar that can both drive and fly." +
+                "" +
+                " We will define two interfaces, IDriveable and IFlyable, and then implement these interfaces in a FlyingCar class.");
+
+            IBankIndia saving = new HdfcSavingaccount(10000);
+            saving.CheckBalance();
+            saving.DepositAmount(2700);
+            saving.WithdrawAmount(5000);
+
+            IBankIndia current = new HdfcCurrentaccount(8000);
+            current.CheckBalance();
+            current.DepositAmount(2700);
+            current.WithdrawAmount(5000);
 
 
+            FlyingCar myFlyingCar = new FlyingCar();
+
+            myFlyingCar.stop();
+            myFlyingCar.run();
+            myFlyingCar.TakeOff();
+            myFlyingCar.Fly();
+
+
+            Console.WriteLine("Polymorphism means takes more than one form." +
+                "In programming its means a function changes its behaviour based on types of input" +
+                "As a developer we seen them in BSL classes also." +
+                "" +
+                "\n" +
+                "Types of polymorphism" +
+                "1. static polymorphism, compile - time polymorphism , Early binding .e.g - Method overloading , Method hiding , Opreator overloading" +
+                "2. Dynamic polymorphism , run - time polymorphism , Late binding e.g : Method overriding " +
+                "" +
+                "Static polymorphism -- Behaviour of Method is decided at compile time." +
+                "Method overloading is an example of it" +
+                "As linking between function call and function defination happens at compile time so it is calles as early binding." +
+                "" +
+                "" +
+                "Dynamic polymorphism :" +
+                "\n In late binding behaviour of Method is decided at run time " +
+                "\n when its object is called . As linking between method call and method defination occurs at run time " +
+                "\n therefore it is called as late binding .");
+
+            staticpolymorphism pm = new staticpolymorphism();
+            pm.Add(10, 15);
+            pm.Add(10.5f, 20.5f);
+            pm.Add("Mohit", "Tanwar");
+
+            MethodOverriding mo = new class2();
+            mo.method(); // which method needs to be called is decided at run time.
+
+            MethodOverloading obj = new MethodOverloading();
+            obj.Method(); //Invoke the 1st Method
+            obj.Method(10); //Invoke the 2nd Method
+            obj.Method("Hello"); //Invoke the 3rd Method
+            obj.Method(10, "Hello"); //Invoke the 4th Method
+            obj.Method("Hello", 10); //Invoke the 5th Method
+
+            Console.WriteLine("" +
+                "Encapsulation is one of the fundamental principles of Object-Oriented Programming (OOP)." +
+                " In C#, as with other OOP languages, encapsulation refers to bundling related data and behaviors into a single unit (typically a class) and restricting access" +
+                " to some of the object’s components. It helps protect the data’s integrity and expose only what’s necessary to the outside world." +
+                "");
+
+            // Starts with a balance of 500
+            EncapsulationRealLifeExample myAccount = new EncapsulationRealLifeExample(500);
+
+            // Balance becomes 700
+            myAccount.Deposit(200);
+            Console.WriteLine($" Your Balance is :---- {myAccount.Balance}"); // Outputs: 700
+
+            // Balance becomes 600
+            myAccount.Withdraw(100);
+            Console.WriteLine($" Your Balance is :---- {myAccount.Balance}"); // Outputs: 600
+
+            // myAccount.balance = -1000;  // This would be an error, as the balance field is private and inaccessible directly.
+
+            CoffeeMachine myMachine = new CoffeeMachine(1000, 100);  // Initialize with 1000 ml of water and 100 grams of beans
+            myMachine.MakeEspresso();  // Outputs: Heating water... Grinding coffee beans... Making Espresso...
+            Console.WriteLine($"Beans left: {myMachine.BeansLeft()} grams");  // 
+
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("-----");
+            }
+
+            Console.WriteLine("" +
+                "Abstraction is a foundational concept in object-oriented programming (OOP) . " +
+                " abstraction refers to hiding the complex implementation details and showing only the essential features of an object." +
+                " Here’s a more detailed explanation:" +
+                "\r\n\r\nHiding Complexity:" +
+                " Just like a car dashboard doesn’t show all the intricate details of how the engine works" +
+                " but provides you with a few essential controls (like the steering wheel, accelerator, brakes, etc.), " +
+                "abstraction in programming is about hiding the intricate details of how something works and providing only the essential operations to work with it." +
+                "\r\nFacilitating Extensibility: " +
+                "Because abstraction allows you to hide implementation details behind a consistent interface," +
+                " you can later change the underlying implementation without affecting the code that uses this abstraction." +
+                "\r\nUsing Classes and Interfaces: " +
+                " abstraction can be achieved using classes and interfaces. " +
+                "While you can’t create an instance of an abstract class, you can use its shape (properties and methods) in child classes." +
+                " Interfaces go a step further by only defining the shape without any implementation, enforcing concrete classes to provide the specifics.");
+
+            static void SendAlert(IMessagingService service, string recipient, string message)
+            {
+                service.SendMessage(recipient, message);
+            }
+
+            //Using the Abstraction
+            Vehicle myCar = new Car();
+            Vehicle myTrain = new ElectricTrain();
+
+            myCar.Stop();
+            myCar.Start();
+            myTrain.Stop();
+            myTrain.Start();
+
+            Console.WriteLine("" +
+                "" +
+                "Imagine a system that has to communicate with multiple messaging platforms: " +
+                "Email, SMS, and Push Notification. Without abstraction, you might end up with methods like SendEmail(), SendSms(), SendPushNotification(), etc." +
+                " scattered throughout your application. " +
+                "If a new messaging method is added, you must add another method and call it differently." +
+                "" +
+                "");
+
+            IMessagingService emailService = new EmailService();
+            IMessagingService smsService = new SmsService();
+            IMessagingService pushService = new PushNotificationService();
+            SendAlert(emailService, "example@example.com", "Hello via Email!");
+            SendAlert(smsService, "1234567890", "Hello via SMS!");
+            SendAlert(pushService, "User123", "Hello via Push Notification!");
+
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("-----");
+            }
+
+            IMediaPlayer vd = new VideoPlayer();
+            IMediaPlayer sd = new AudioPlayer();
+            vd.Play("Heropanti.mkv");
+            sd.Play("song.mp4");
+
+            MallCounter cc = new creditcardPayment();
+            MallCounter pp = new PaypalPayment();
+            MallCounter Bp = new BitCoinPayment();
+            cc.Welcome();
+            cc.PaymentSuccessfull();
+            pp.Welcome();
+            pp.PaymentSuccessfull();
+            Bp.Welcome();
+            pp.PaymentSuccessfull();
+
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("-----");
+            }
+
+
+            Console.WriteLine("" +
+                "inheritance is another core principle of object-oriented programming." +
+                " It allows a class to inherit properties and methods from another, promoting code reuse and establishing a natural hierarchy between classes.;" +
+                "" +
+                "Base Class (Parent Class):" +
+                " The class whose members are inherited by another class. It’s also known as the superclass or parent class." +
+                "\r\nDerived Class (Child Class):" +
+                " The class that inherits members from the base class. It can also introduce additional members or override inherited ones." +
+                " It’s also known as the subclass or child class." +
+                "\r\nInheritance Chain: " +
+                "Classes can inherit from a class that inherits from another class, leading to an inheritance “chain” or “hierarchy.”" +
+                "\r\nAccess Modifiers: " +
+                "Only members with public, protected, or internal access modifiers in the base class are accessible from the derived class. " +
+                "Private members of the base class are not accessible in the derived class." +
+                "\r\nMethod Overriding: " +
+                "If the base class defines a method as virtual, the derived class can override this method using the override keyword." +
+                " This allows the derived class to provide a specific implementation for that method." +
+                "\r\n" +
+                "The base Keyword: " +
+                "Inside a derived class, you can use the base keyword to access members of the base class." +
+                "\r\n" +
+                "Sealed Classes:" +
+                "if you want to prevent a class from being inherited, you can mark it with the sealed keyword.");
+
+            CarII myCarII = new CarII { Doors = 4 };
+            myCarII.Start();
+            myCarII.Accelerate();
+            myCarII.OpenSunroof();
+            myCarII.Stop();
+            Console.WriteLine();
+            Motorcycle myBike = new Motorcycle { HasSideCar = false };
+            myBike.Start();
+            myBike.Accelerate();
+            myBike.UseKickstand();
+            myBike.Stop();
+
+            Console.WriteLine("Polymorphism is a fundamental principle in object-oriented programming (OOP) that allows objects of different classes to be treated as objects of a common superclass." +
+                "polymorphism helps in invoke nodes of derived classes through base class referrence." +
+                "Compile-Time Polymorphism (Static Polymorphism):" +
+                "\r\n" +
+                "Achieved by method overloading or operator overloading." +
+                "\r\n" +
+                "The method call is resolved at compile-time." +
+                "\r\nRun-Time Polymorphism (Dynamic Polymorphism):" +
+                "\r\n" +
+                "Achieved by method overriding." +
+                "\r\n" +
+                "The method call is resolved at runtime based on the actual object type." +
+                "\r\n" +
+                "In C#, this is implemented using the virtual keyword in the base class method and the override keyword in the derived class method.");
+
+            shapeII pg = new pentagaon();
+            shapeII Sg = new Hexagaon();
+            pg.MakeSound();
+            Sg.MakeSound();
 
 
         }
     }
 
+
+    public class MethodOverloading
+    {
+        public void Method()
+        {
+            Console.WriteLine("1st Method");
+        }
+        public void Method(int i)
+        {
+            Console.WriteLine("2nd Method");
+        }
+        public void Method(string s)
+        {
+            Console.WriteLine("3rd Method");
+        }
+        public void Method(int i, string s)
+        {
+            Console.WriteLine("4th Method");
+        }
+        public void Method(string s, int i)
+        {
+            Console.WriteLine("5th Method");
+        }
+    }
+
+    public class MethodOverriding
+    {
+        public virtual void method()
+        {
+            Console.WriteLine("Call from Parent class.");
+        }
+    }
+
+    public class class2 : MethodOverriding
+    {
+        public override void method()
+        {
+            Console.WriteLine("Call from child class.");
+        }
+    }
+    public class staticpolymorphism
+    {
+        public void Add(int a, int b)
+        {
+            Console.WriteLine(a + b);
+        }
+        public void Add(float x, float y)
+        {
+            Console.WriteLine(x + y);
+        }
+        public void Add(string s1, string s2)
+        {
+            Console.WriteLine(s1 + " " + s2);
+        }
+    }
+    public interface IDriveable
+    {
+        void stop();
+        void run();
+    }
+
+    public interface IFlyable
+    {
+        void TakeOff();
+        void Fly();
+    }
+
+    public class FlyingCar : IFlyable, IDriveable
+    {
+        public void stop()
+        {
+            Console.WriteLine("Car is starting.");
+        }
+
+        public void run()
+        {
+            Console.WriteLine("Car is stopping.");
+        }
+
+        public void TakeOff()
+        {
+            Console.WriteLine("Airplane is taking off.");
+        }
+
+        public void Fly()
+        {
+            Console.WriteLine("Airplane is landing.");
+        }
+
+    }
+
+    public interface IBankIndia
+    {
+        void DepositAmount(double amount);
+        void WithdrawAmount(double amount);
+        void CheckBalance();
+    }
+
+    public class HdfcSavingaccount : IBankIndia
+    {
+        private double balance = 0;
+        private double perdaywithdrwalLimit = 10000;
+        private double todaywithdrawal = 0;
+
+        public HdfcSavingaccount(double bal)
+        {
+            this.balance = bal;
+
+        }
+
+        public void DepositAmount(double amount)
+        {
+            balance = balance + amount;
+            Console.Write($"Balance ammount is {balance}");
+        }
+
+        public void WithdrawAmount(double amount)
+        {
+            if (amount >= balance)
+            {
+                Console.WriteLine("Sorry insufficient balance");
+            }
+            else if (amount >= perdaywithdrwalLimit)
+            {
+                Console.WriteLine("Sorry Limit exceeded");
+            }
+            else
+            {
+                balance = balance - todaywithdrawal;
+                Console.WriteLine($"Amount withdrawal successfully. " +
+                    $" Balnce remain {balance}");
+            }
+        }
+
+        public void CheckBalance()
+        {
+            Console.Write($"Balance ammount is {balance}");
+        }
+    }
+
+    public class HdfcCurrentaccount : IBankIndia
+    {
+        private double balance = 0;
+
+        private double todaywithdrawal = 0;
+
+        public HdfcCurrentaccount(double bal)
+        {
+            this.balance = bal;
+
+        }
+
+        public void DepositAmount(double amount)
+        {
+            balance = balance + amount;
+            Console.Write($"Balance ammount is {balance}");
+        }
+
+        public void WithdrawAmount(double amount)
+        {
+            if (amount >= balance)
+            {
+                Console.WriteLine("Sorry insufficient balance");
+            }
+
+            else
+            {
+                balance = balance - todaywithdrawal;
+                Console.WriteLine($"Amount withdrawal successfully. " +
+                    $" Balnce remain {balance}");
+            }
+        }
+
+        public void CheckBalance()
+        {
+            Console.Write($"Balance ammount is {balance}");
+        }
+    }
 
     //Abstarct class is a class that can not be instited directly
     //it acts as a blueprint for dervied class contains abstract method and concerte method.
@@ -527,7 +942,7 @@ namespace ConsoleClassUses
         void CompanyName();
         void ModelYear();
 
-        
+
     }
 
 
@@ -599,7 +1014,7 @@ namespace ConsoleClassUses
             Console.WriteLine("I am a smartphone");
         }
 
-       public abstract void CompanyName();
+        public abstract void CompanyName();
     }
 
     public class Nokia : phone
@@ -921,7 +1336,7 @@ namespace ConsoleClassUses
         public static IBank Getbank(string type)
         {
             IBank ob = null;
-            if(type == "SBI")
+            if (type == "SBI")
             {
                 ob = new SBI();
             }
@@ -996,36 +1411,343 @@ namespace ConsoleClassUses
         }
     }
 
-  
-        class A
+
+    class A
+    {
+        public A(int number)
         {
-            public A(int number)
+            Console.WriteLine($"Class A Constructor is Called : {number}");
+        }
+        public void Method1()
+        {
+            Console.WriteLine("Method 1");
+        }
+        public void Method2()
+        {
+            Console.WriteLine("Method 2");
+        }
+    }
+
+    class B : A
+    {
+        public B(int num) : base(num)
+        {
+            Console.WriteLine("Class B Constructor is Called");
+        }
+        public void Method3()
+        {
+            Console.WriteLine("Method 3");
+        }
+
+    }
+
+
+    internal class EncapsulationRealLifeExample
+    {
+        // This private field is encapsulated and can't be directly accessed from outside the class.
+        private decimal balance;
+
+        public decimal Balance
+        {
+            // Only provides a way to read the balance but not modify it directly.
+            get { return balance; }
+        }
+
+        public EncapsulationRealLifeExample(decimal initialBalance)
+        {
+            if (initialBalance < 0)
             {
-                Console.WriteLine($"Class A Constructor is Called : {number}");
+                throw new ArgumentException("Initial balance cannot be negative.");
             }
-            public void Method1()
+
+            balance = initialBalance;
+        }
+
+        public void Deposit(decimal amount)
+        {
+            if (amount <= 0)
             {
-                Console.WriteLine("Method 1");
+                throw new ArgumentException("Deposit amount should be positive.");
             }
-            public void Method2()
+
+            balance += amount;
+        }
+
+        public void Withdraw(decimal amount)
+        {
+            if (amount <= 0)
             {
-                Console.WriteLine("Method 2");
+                throw new ArgumentException("Withdrawal amount should be positive.");
+            }
+
+            if (balance - amount < 0)
+            {
+                throw new InvalidOperationException("Insufficient funds.");
+            }
+
+            balance -= amount;
+        }
+
+    }
+
+    public class CoffeeMachine
+    {
+        private int waterAmount; // in milliliters
+        private int beansAmount; // in grams
+        private bool isHeated;
+        public CoffeeMachine(int water, int beans)
+        {
+            waterAmount = water;
+            beansAmount = beans;
+            isHeated = false;
+        }
+        private void HeatWater()
+        {
+            if (!isHeated)
+            {
+                Console.WriteLine("Heating water...");
+                isHeated = true;
             }
         }
 
-        class B : A
+        private void GrindBeans(int amount)
         {
-            public B(int num) : base(num)
+            if (beansAmount < amount)
             {
-                Console.WriteLine("Class B Constructor is Called");
+                throw new InvalidOperationException("Not enough coffee beans!");
             }
-            public void Method3()
-            {
-                Console.WriteLine("Method 3");
-            }
-            
+            Console.WriteLine("Grinding coffee beans...");
+            beansAmount -= amount;
+        }
+        // This is the method exposed to the user.
+        public void MakeEspresso()
+        {
+            HeatWater();
+            GrindBeans(20); // let's say we need 20 grams of beans for an espresso
+            Console.WriteLine("Making Espresso...");
+        }
+        // Another method exposed to the user.
+        public void MakeLatte()
+        {
+            HeatWater();
+            GrindBeans(25); // we need 25 grams of beans for a latte
+            Console.WriteLine("Making Latte...");
+        }
+        public int BeansLeft()
+        {
+            return beansAmount;
+        }
+
+        public int WaterLeft()
+        {
+            return waterAmount;
         }
     }
+
+    public abstract class Vehicle
+    {
+        // These are abstract methods; the derived classes will provide the implementation.
+        public abstract void Start();
+        public abstract void Stop();
+    }
+    //Concrete Implementations
+    public class Car : Vehicle
+    {
+        public override void Start()
+        {
+            Console.WriteLine("Car is starting with a key turn.");
+        }
+        public override void Stop()
+        {
+            Console.WriteLine("Car is stopping using its brakes.");
+        }
+    }
+    public class ElectricTrain : Vehicle
+    {
+        public override void Start()
+        {
+            Console.WriteLine("Electric train is starting by powering up.");
+        }
+        public override void Stop()
+        {
+            Console.WriteLine("Electric train is stopping by cutting off the power.");
+        }
+    }
+
+    public interface IMessagingService
+    {
+        void SendMessage(string recipient, string message);
+    }
+
+    public class EmailService : IMessagingService
+    {
+        public void SendMessage(string recipient, string message)
+        {
+            Console.WriteLine($"Sending Email to {recipient}: {message}");
+            // Here, you'd have the actual logic to send an email.
+        }
+    }
+    public class SmsService : IMessagingService
+    {
+        public void SendMessage(string recipient, string message)
+        {
+            Console.WriteLine($"Sending SMS to {recipient}: {message}");
+            // Here, you'd have the actual logic to send an SMS.
+        }
+    }
+    public class PushNotificationService : IMessagingService
+    {
+        public void SendMessage(string recipient, string message)
+        {
+            Console.WriteLine($"Sending Push Notification to {recipient}: {message}");
+            // Here, you'd have the actual logic to send a push notification.
+        }
+    }
+
+    public interface IMediaPlayer
+    {
+        void Play(string filePath);
+    }
+
+    public class AudioPlayer : IMediaPlayer
+    {
+        public void Play(string filePath)
+        {
+            Console.WriteLine($"Playing song from  {filePath}");
+        }
+    }
+
+    public class VideoPlayer : IMediaPlayer
+    {
+        public void Play(string filePath)
+        {
+            Console.WriteLine($"Playing video from  {filePath}");
+        }
+    }
+
+    //Let’s imagine a scenario where you’re developing a system for an online store that supports multiple payment methods like Credit Cards, PayPal, and Bitcoin.
+    //Without abstraction, you’d potentially have disparate methods like ProcessCreditCardPayment(), ProcessPayPalPayment(), etc.
+    //This would make the system rigid and difficult to extend if you were to introduce new payment methods.
+
+    public abstract class MallCounter
+    {
+        internal void Welcome()
+        {
+            Console.WriteLine("Welcome To Elante Mall");
+        }
+
+        internal abstract bool PaymentSuccessfull();
+    }
+
+    internal class creditcardPayment : MallCounter
+    {
+        internal override bool PaymentSuccessfull()
+        {
+
+            Console.WriteLine("Credit card payment choosen by user" +
+                "Need pincode of crdit card");
+            return true;
+        }
+    }
+
+    internal class PaypalPayment : MallCounter
+    {
+        internal override bool PaymentSuccessfull()
+        {
+
+            Console.WriteLine("Paypal account payment choosen by user" +
+                "Need Dmeat id of Paypal ");
+            return true;
+        }
+    }
+
+    internal class BitCoinPayment : MallCounter
+    {
+        internal override bool PaymentSuccessfull()
+        {
+
+            Console.WriteLine("BitCoin account payment choosen by user" +
+                "Need Seeler Bitcon credentials  id of Bitcoin  ");
+            return true;
+        }
+    }
+
+    //Different types of vehicles,
+    //such as a basic vehicle, a car, and a motorcycle.
+    //All vehicles can be started and stopped and have a speed.
+    //However, cars and motorcycles have specific properties and behaviors.
+
+    //Base Class (Parent Class) - Vehicle
+    public class VehicleII
+    {
+        public int Speed { get; protected set; }
+        public void Start()
+        {
+            Console.WriteLine("Vehicle started.");
+        }
+        public void Stop()
+        {
+            Console.WriteLine("Vehicle stopped.");
+        }
+        public virtual void Accelerate()
+        {
+            Speed += 5;
+            Console.WriteLine($"Vehicle accelerates. Current speed: {Speed} km/h.");
+        }
+    }
+    //Derived Class (Child Class) - Car
+    public class CarII : VehicleII
+    {
+        public int Doors { get; set; }
+        public override void Accelerate()
+        {
+            Speed += 10;
+            Console.WriteLine($"Car accelerates. Current speed: {Speed} km/h.");
+        }
+        public void OpenSunroof()
+        {
+            Console.WriteLine("Sunroof opened.");
+        }
+    }
+    //Derived Class (Child Class) - Motorcycle
+    public class Motorcycle : VehicleII
+    {
+        public bool HasSideCar { get; set; }
+        public override void Accelerate()
+        {
+            Speed += 7;
+            Console.WriteLine($"Motorcycle accelerates. Current speed: {Speed} km/h.");
+        }
+        public void UseKickstand()
+        {
+            Console.WriteLine("Kickstand placed.");
+        }
+    }
+
+    //Let’s understand polymorphism using another real-world example: a graphics program that can draw different shapes. Each shape can be drawn on a canvas,
+    //but the way each shape is drawn might differ.
+
+    public abstract class shapeII
+    {
+        public abstract void MakeSound();
+    }
+
+    public class pentagaon : shapeII
+    {
+        public override void MakeSound()
+        {
+            Console.Write("Penta penta - gaon");
+        }
+    }
+
+    public class Hexagaon : shapeII
+    {
+        public override void MakeSound()
+        {
+            Console.Write("Hexa Hexa - gaon");
+        }
+    }
+}
 
 
 
